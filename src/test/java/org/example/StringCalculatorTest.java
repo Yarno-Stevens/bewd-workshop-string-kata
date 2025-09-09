@@ -77,4 +77,37 @@ public class StringCalculatorTest {
         //Assert
         Assertions.assertEquals(6, testValue);
     }
+
+    @Test
+    void addNumbersInStringWithCustomLineSeparatorTest(){
+        // Arrange
+
+        //Act
+        var testValue = sut.add("//>\n2>3>4>2");
+
+        //Assert
+        Assertions.assertEquals(11, testValue);
+    }
+
+    @Test
+    void addNumbersInStingButOnlyWhenCountIsBelowAThousandTest(){
+        // Arrange
+
+        //Act
+        var testValue = sut.add("10,100,1000,1100");
+
+        //Assert
+        Assertions.assertEquals(1110, testValue);
+    }
+
+    @Test
+    void addNumbersInStingButOnlyWhenCountIsBelowAThousandWithCustomSeparatorTest(){
+        // Arrange
+
+        //Act
+        var testValue = sut.add("//~\n10~200~1000~4500");
+
+        //Assert
+        Assertions.assertEquals(1210, testValue);
+    }
 }
